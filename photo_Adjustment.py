@@ -23,7 +23,7 @@ for filename in filenames:
         print(filename, width, height, os.path.getsize(filename))
 
 
-#我們先用os.path.exists()函數判定這個目錄是否存在。
+#我們先用os.path.exists()函數判定這個目錄是否存在
 #當判定為不存在時，我們採用os.makedirs()函數來創建它。        
 if not os.path.exists(target_dir):
     os.makedirs(target_dir)
