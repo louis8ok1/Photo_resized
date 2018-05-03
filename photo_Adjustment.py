@@ -23,23 +23,24 @@ for filename in filenames:
         print(filename, width, height, os.path.getsize(filename))
 
 
-#我們先用os.path.exists()函數判定這個目錄是否存在
-#當判定為不存在時，我們採用os.makedirs()函數來創建它。        
+#我們先用os.path.exists()函數判定這個目錄是否存在。
+#當判定為不存在時，我們採用os.makedirs()函數來創建它       
 if not os.path.exists(target_dir):
     os.makedirs(target_dir)
     
 #對需要壓縮的圖片，新的寬度和高度
 for filename in filenames:
+   
     filesize = os.path.getsize(filename)
     
     with Image.open(filename) as im:
             i+=1
             width, height = im.size
-            new_width = 180
-            
             new_height = 240
-            print('adjusted size:', new_width, new_height)
-            resized_im = im.resize((new_width, new_height))
+            
+            new_width = 180
+            print('adjusted size:', new_height, new_width)
+            resized_im = im.resize((new_height, new_width),Image.ANTIALIAS)
             output_filename = filename.replace(source_dir, target_dir)
             if(i<10):
              resized_im.save("resized_images/410421236_0"+str(i)+".jpg")
